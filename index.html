@@ -90,7 +90,10 @@
                 stations.forEach(stationName => {
                     const stationData = data.value.find(community => community.CommunityName === stationName);
                     if (stationData) {
-                        const currentAQHI = validateAQHI(stationData.Aqhi || "Not Available");
+                        const rawAQHI = stationData.Aqhi;
+                        const displayAQHI = validateAQHI(rawAQHI || "Not Available");
+                        const displaycolor = getAQHIColor(rawAQHI || "Not Available");
+                        
                         const forecastToday = stationData.ForecastToday || "Forecast Unavailable";
                         const forecastTonight = stationData.ForecastTonight || "Forecast Unavailable";
                         const forecastTomorrow = stationData.ForecastTomorrow || "Forecast Unavailable";
@@ -107,7 +110,7 @@
                 // Start building the row
                 let rowHTML = `
                     <td>${stationName}</td>
-                    <td style="background-color: ${getAQHIColor(currentAQHI)}">${currentAQHI}</td>
+                    <td style="background-color: ${displaycolor}">${displayAQHI}</td>
                     <td>${readingDate}</td>
                 `;
 
