@@ -90,6 +90,7 @@
                 const response = await fetch(url);
                 const data = await response.json();
                 const tableBody = document.getElementById('aqhiTableBody');
+		tableBody.innerHTML = ''; 
 										  
                 
                 stations.forEach(stationName => {
@@ -149,7 +150,6 @@
                 console.error('Error fetching AQHI data:', error);
             }
         }
-
         document.addEventListener('DOMContentLoaded', () => {
             fetchAQHI();
             setInterval(fetchAQHI, 600000); // refresh every 10 minutes (600,000 ms)
