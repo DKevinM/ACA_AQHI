@@ -102,7 +102,6 @@ async function fetchAQHI() {
         stations.forEach(stationName => {
             const stationData = data.value.find(community => community.CommunityName === stationName);
             if (stationData) {
-                // ✅ This block must be inside the loop
                 let displayName = stationName;
                 if (displayName === "Strathcona County") displayName += "<sup>1</sup>";
                 if (displayName.startsWith("Leduc")) displayName = "Leduc<sup>2</sup>";
