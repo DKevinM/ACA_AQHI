@@ -90,6 +90,8 @@
         async function fetchAQHI() {
             const url = "https://data.environment.alberta.ca/EdwServices/aqhi/odata/CommunityAqhis?$format=json";
             const stations = ["Edmonton", "Strathcona County", "St. Albert", "Enoch", "Leduc (Sensor)"];
+		    // Define display name with superscript
+		let displayName = name;
 		if (displayName.includes("Strathcona County")) displayName += "<sup>1</sup>";
 		if (displayName.includes("Leduc")) displayName = "Leduc<sup>2</sup>"; 
             try {
