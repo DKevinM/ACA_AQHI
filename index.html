@@ -26,6 +26,10 @@
      
     </style>
 </head>
+	<div style="margin-top:20px; font-size: 13px; text-align: center;">
+	  <p><sup>1</sup> Monitored by industry, not validated by ACA</p>
+	  <p><sup>2</sup> Monitored by AEPA, not validated by ACA</p>
+	</div>
 <body>
     <div class="container">
         <table>
@@ -86,6 +90,8 @@
         async function fetchAQHI() {
             const url = "https://data.environment.alberta.ca/EdwServices/aqhi/odata/CommunityAqhis?$format=json";
             const stations = ["Edmonton", "Strathcona County", "St. Albert", "Enoch", "Leduc (Sensor)"];
+		if (displayName.includes("Strathcona County")) displayName += "<sup>1</sup>";
+		if (displayName.includes("Leduc")) displayName = "Leduc<sup>2</sup>"; 
             try {
                 const response = await fetch(url);
                 const data = await response.json();
